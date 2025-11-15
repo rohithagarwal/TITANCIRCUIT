@@ -123,7 +123,7 @@ Theme switching updates the entire UI instantly.
 1.  Download or clone this repository:
 
     ``` bash
-    git clone https://github.com/your-username/titan-hex.git
+    git clone https://github.com/rohithagarwal/TITANCIRCUIT.git
     ```
 
 2.  Open the **index.html** file in any modern browser.\
