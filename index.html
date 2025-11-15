@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexagonal Grid Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="game-title">Hexagonal Grid Game</div>
+            <label class="theme-toggle">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="game-info">
+            <div class="player-info">
+                <div class="player-color red"></div>
+                <div>
+                    <div>Red Player: <span id="red-score">0</span> points</div>
+                    <div class="titan-counter">Titans: <span id="red-titans">0</span>/4</div>
+                </div>
+            </div>
+            <div>
+                <div id="game-phase">Phase: Placement</div>
+                <div id="current-player">Current Player: Red</div>
+            </div>
+            <div class="player-info">
+                <div class="player-color blue"></div>
+                <div>
+                    <div>Blue Player: <span id="blue-score">0</span> points</div>
+                    <div class="titan-counter">Titans: <span id="blue-titans">0</span>/4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer-container">
+            <div class="timer">
+                <div>Game Timer: <span id="game-timer">05:00</span></div>
+            </div>
+            <div class="timer">
+                <div>Turn Timer: <span id="turn-timer">00:30</span></div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="hexagonal-grid" id="hexagonal-grid"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="start-game">Start Game</button>
+            <button id="pause-game" disabled>Pause Game</button>
+            <button id="reset-game">Reset Game</button>
+        </div>
+
+        <div class="game-status" id="game-status"></div>
+    </div>
+
+    <div class="modal" id="winner-modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2 id="winner-text">Player Wins!</h2>
+            <p id="final-score"></p>
+            <button id="play-again">Play Again</button>
+        </div>
+    </div>
+
+    <div class="pause-overlay" id="pause-overlay">
+        <div class="pause-message">
+            Game Paused
+            <br>
+            <button id="resume-game" style="margin-top: 20px;">Resume Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

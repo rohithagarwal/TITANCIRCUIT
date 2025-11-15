@@ -1,0 +1,300 @@
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --node-color: #fff;
+    --edge-color: #000;
+    --red-player: #ff5252;
+    --blue-player: #4285f4;
+    --node-border: #000;
+    --timer-bg: #eee;
+    --button-bg: #4285f4;
+    --button-text: #fff;
+    --toggle-bg: #ddd;
+    --toggle-slider: #fff;
+}
+
+.dark-theme {
+    --bg-color: #1e2130;
+    --text-color: #f5f5f5;
+    --node-color: #2d3142;
+    --edge-color: #fff;
+    --node-border: #fff;
+    --timer-bg: #2d3142;
+    --button-bg: #4285f4;
+    --button-text: #fff;
+    --toggle-bg: #555;
+    --toggle-slider: #f5f5f5;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.game-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle-bg);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--toggle-slider);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+}
+
+.player-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.red {
+    background-color: var(--red-player);
+}
+
+.blue {
+    background-color: var(--blue-player);
+}
+
+.timer-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.timer {
+    background-color: var(--timer-bg);
+    padding: 10px;
+    border-radius: 5px;
+    width: 48%;
+    text-align: center;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    position: relative;
+}
+
+.hexagonal-grid {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.node {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--node-color);
+    border: 2px solid var(--node-border);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.3s;
+}
+
+.node.red-titan {
+    background-color: var(--red-player);
+}
+
+.node.blue-titan {
+    background-color: var(--blue-player);
+}
+
+.edge {
+    position: absolute;
+    height: 2px;
+    background-color: var(--edge-color);
+    transform-origin: left center;
+    z-index: 1;
+}
+
+.edge-weight {
+    position: absolute;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.edge.controlled-red {
+    background-color: var(--red-player);
+    height: 4px;
+}
+
+.edge.controlled-blue {
+    background-color: var(--blue-player);
+    height: 4px;
+}
+
+.game-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.game-status {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.pause-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.pause-message {
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.titan-counter {
+    margin-top: 5px;
+    font-size: 14px;
+}
