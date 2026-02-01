@@ -128,7 +128,9 @@ Theme switching updates the entire UI instantly.
 
 2.  Open the **index.html** file in any modern browser.\
 
-3.  Play!
+3.  https://titancircuit.vercel.app
+
+4.  Play!
 
 ------------------------------------------------------------------------
 
